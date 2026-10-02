@@ -107,7 +107,7 @@ priceBetween2500And5000Dat <- diamonds |> filter(price >= 2500, price <= 5000)
 
 ```{r}
 summary(priceBetween2500And5000Dat)
-#mode(priceBetween2500And5000Dat$color) didn't work because it takes in a character rather than numeric argument
+#mode(priceBetween2500And5000Dat$color) used to show storage mode rather than most frequent value
 table(priceBetween2500And5000Dat$color)
 ```
 F appeared 2221 times, which is the mode color.
