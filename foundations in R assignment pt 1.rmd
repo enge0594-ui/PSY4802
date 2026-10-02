@@ -1,6 +1,6 @@
 ---
 title: "Foundations in R Assignment pt 1"
-author: "Amanda Mae Woodward"
+author: "James Engelberth"
 date: "2026-09-24"
 output: html_document
 ---
@@ -63,10 +63,12 @@ summary(adelieDat)
 data(penguins)
 mean(penguins$bill_len) #doesn't work because of NA cases
 summary(penguins$bill_len)
-largeBillDat <- subset(penguins, bill_len >= 43.92)
+#largeBillDat <- subset(penguins, bill_len >= 43.92)
 #Alternative method: penguins |> filter(bill_len >= 43.92)
 #Looked up how to remove NA cases: 
-mean(penguins$bill_len, trim = 0, na.rm = TRUE)
+#mean(penguins$bill_len, na.rm = TRUE)
+meanBillLen <- mean(penguins$bill_len, na.rm = TRUE)
+largeBillDat<-subset(penguins, bill_len >= meanBillLen)
 ```
 
 9. How many penguins are in this subset? 
@@ -105,7 +107,8 @@ priceBetween2500And5000Dat <- diamonds |> filter(price >= 2500, price <= 5000)
 
 ```{r}
 summary(priceBetween2500And5000Dat)
-#mode(priceBetween2500And5000Dat$color) didn't work
+#mode(priceBetween2500And5000Dat$color) didn't work because it takes in a character rather than numeric argument
+table(priceBetween2500And5000Dat$color)
 ```
 F appeared 2221 times, which is the mode color.
 

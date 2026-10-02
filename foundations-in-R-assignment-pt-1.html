@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Amanda Mae Woodward" />
+<meta name="author" content="James Engelberth" />
 
 <meta name="date" content="2026-09-24" />
 
@@ -351,7 +351,7 @@ display: none;
 
 
 <h1 class="title toc-ignore">Foundations in R Assignment pt 1</h1>
-<h4 class="author">Amanda Mae Woodward</h4>
+<h4 class="author">James Engelberth</h4>
 <h4 class="date">2026-09-24</h4>
 
 </div>
@@ -776,11 +776,12 @@ mean(penguins$bill_len) #doesn&#39;t work because of NA cases</code></pre>
 <pre class="r"><code>summary(penguins$bill_len)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
 ##   32.10   39.23   44.45   43.92   48.50   59.60       2</code></pre>
-<pre class="r"><code>largeBillDat &lt;- subset(penguins, bill_len &gt;= 43.92)
+<pre class="r"><code>#largeBillDat &lt;- subset(penguins, bill_len &gt;= 43.92)
 #Alternative method: penguins |&gt; filter(bill_len &gt;= 43.92)
 #Looked up how to remove NA cases: 
-mean(penguins$bill_len, trim = 0, na.rm = TRUE)</code></pre>
-<pre><code>## [1] 43.92193</code></pre>
+#mean(penguins$bill_len, na.rm = TRUE)
+meanBillLen &lt;- mean(penguins$bill_len, na.rm = TRUE)
+largeBillDat&lt;-subset(penguins, bill_len &gt;= meanBillLen)</code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li>How many penguins are in this subset?</li>
 </ol>
@@ -844,7 +845,11 @@ includes all diamonds with a price between $2500 and $5000.</li>
 ##  3rd Qu.:59.00   3rd Qu.:4362   3rd Qu.:6.440   3rd Qu.:6.430   3rd Qu.:3.990  
 ##  Max.   :73.00   Max.   :5000   Max.   :7.620   Max.   :7.590   Max.   :4.870  
 ## </code></pre>
-<pre class="r"><code>#mode(priceBetween2500And5000Dat$color) didn&#39;t work</code></pre>
+<pre class="r"><code>#mode(priceBetween2500And5000Dat$color) didn&#39;t work because it takes in a character rather than numeric argument
+table(priceBetween2500And5000Dat$color)</code></pre>
+<pre><code>## 
+##    D    E    F    G    H    I    J 
+## 1518 2184 2221 1950 1932 1225  656</code></pre>
 <p>F appeared 2221 times, which is the mode color.</p>
 </div>
 
