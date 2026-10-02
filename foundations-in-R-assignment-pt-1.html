@@ -771,13 +771,16 @@ penguins[,]</code></pre>
 than or equal to the average bill length.</li>
 </ol>
 <pre class="r"><code>data(penguins)
-mean(penguins$bill_len) #I have no idea why this command didn&#39;t work.</code></pre>
+mean(penguins$bill_len) #doesn&#39;t work because of NA cases</code></pre>
 <pre><code>## [1] NA</code></pre>
 <pre class="r"><code>summary(penguins$bill_len)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
 ##   32.10   39.23   44.45   43.92   48.50   59.60       2</code></pre>
 <pre class="r"><code>largeBillDat &lt;- subset(penguins, bill_len &gt;= 43.92)
-#Alternative method: penguins |&gt; filter(bill_len &gt;= 43.92)</code></pre>
+#Alternative method: penguins |&gt; filter(bill_len &gt;= 43.92)
+#Looked up how to remove NA cases: 
+mean(penguins$bill_len, trim = 0, na.rm = TRUE)</code></pre>
+<pre><code>## [1] 43.92193</code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li>How many penguins are in this subset?</li>
 </ol>

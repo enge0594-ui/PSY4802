@@ -61,10 +61,12 @@ summary(adelieDat)
 
 ```{r}
 data(penguins)
-mean(penguins$bill_len) #I have no idea why this command didn't work.
+mean(penguins$bill_len) #doesn't work because of NA cases
 summary(penguins$bill_len)
 largeBillDat <- subset(penguins, bill_len >= 43.92)
 #Alternative method: penguins |> filter(bill_len >= 43.92)
+#Looked up how to remove NA cases: 
+mean(penguins$bill_len, trim = 0, na.rm = TRUE)
 ```
 
 9. How many penguins are in this subset? 
